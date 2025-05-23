@@ -8,12 +8,13 @@ export default function FormPage() {
     email: '',
     age: '',
     gender: '',
+    comment: '',
   });
 
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -31,7 +32,7 @@ export default function FormPage() {
 
       if (res.ok) {
         setMessage('Form submitted successfully!');
-        setFormData({ name: '', email: '', age: '', gender: '' });
+        setFormData({ name: '', email: '', age: '', gender: '', comment: '' });
       } else {
         setError('Submission failed. Try again.');
       }
@@ -43,7 +44,7 @@ export default function FormPage() {
 
   return (
     <section className="max-w-2xl mx-auto bg-white p-10 mt-10 rounded-2xl shadow-lg">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Submit Your Details</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Submit Your Feedback</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
@@ -96,6 +97,17 @@ export default function FormPage() {
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
+        </div>
+
+        <div>
+          <textarea
+            name="comment"
+            value={formData.comment}
+            onChange={handleChange}
+            placeholder="Your Feedback"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            rows={4}
+          />
         </div>
 
         <button
