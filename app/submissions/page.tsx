@@ -183,24 +183,15 @@ export default function SubmissionsPage() {
                       <td className="px-6 py-4 whitespace-pre-wrap break-words">{item.comment || '-'}</td>
                       <td className="px-6 py-4 space-x-2">
                         <div className="flex gap-3 mt-4">
-  {editingId === item.id ? (
-    <button
-      onClick={saveEdit}
-      className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-    >
-      Save
-    </button>
-  ) : (
-    <button
-      onClick={() => startEditing(item)}
-      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-    >
-      Edit
-    </button>
-  )}
+  <button
+    onClick={() => startEditing(item)}
+    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+  >
+    Edit
+  </button>
   <button
     onClick={() => handleDelete(item.id)}
-    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+    className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
   >
     Delete
   </button>
